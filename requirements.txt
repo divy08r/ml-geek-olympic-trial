@@ -1,6 +1,2 @@
 
 flask
-numpy
-pandas
-matplotlib
-plotly
