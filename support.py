@@ -1,3 +1,8 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+import dataframe_image as dfi
 
 medal = pd.read_csv('file.csv')
 medal.head()
