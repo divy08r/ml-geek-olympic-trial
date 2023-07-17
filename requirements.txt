@@ -4,5 +4,3 @@ numpy
 pandas
 matplotlib
 plotly
-dataframe_image
-kaleido==0.1.0post1
