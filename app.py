@@ -26,7 +26,7 @@ def hello_world():
 def bye_World():
     return render_template("model.html")
 
-@app.route('/model', methods=['POST'])
+@app.route('/model', method=['POST'])
 def predict():
     if request.method == 'POST':
         int_features=[x for x in request.form.values()]
