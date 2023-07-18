@@ -4,5 +4,4 @@ matplotlib
 flask
 seaborn
 scikit-learn
-sklearn
 gunicorn
