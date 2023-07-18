@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, redirect
-from api.application import create_app
 import pickle
 import Health_predict as hp
 
@@ -68,8 +67,5 @@ def new_world():
 
 
 
-if __name__ == '__main__':
-    create_app = create_app()
-    create_app.run()
-else:
-    gunicorn_app = create_app()
+if __name__ == "__main__" :
+    app.run(debug=True)
