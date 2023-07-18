@@ -66,5 +66,9 @@ def new_world():
     return render_template("analysis.html")
 
 
-if __name__ == "__main__" :
-    app.run(debug=True)
+
+if __name__ == '__main__':
+    create_app = create_app()
+    create_app.run()
+else:
+    gunicorn_app = create_app()
