@@ -49,11 +49,12 @@ def predict():
         prediction=model2.predict(x_input)
         output= prediction[0]
 
-    if output == 1:
-        return render_template('model.html',pred='Athelete is all right🥳🥳')
+        if output == 1:
+            return render_template('model.html',pred='Athelete is all right🥳🥳')
+        else:
+            return render_template('model.html',pred='Athelete requires medical emergency🏥🏥')
     else:
-        return render_template('model.html',pred='Athelete requires medical emergency🏥🏥')
-
+        return render_template('model.html')
 
 
 @app.route('/analysis')
