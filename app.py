@@ -22,44 +22,39 @@ def hello_world():
 def bye_World():
     return render_template("model.html")
 
-
-
-@app.route('/predict', methods=['POST', 'GET'])
+@app.route('/model', methods=['POST', 'GET'])
 def predict():
-    
-    int_features=[x for x in request.form.values()]
-    finalarray=[np.array(int_features)]
-    def input(finalarray):
-        import pandas as pd
-        from sklearn.preprocessing import StandardScaler
-        from sklearn.preprocessing import MaxAbsScaler
-        from sklearn.preprocessing import OneHotEncoder
-        final = {
-            "gender" : finalarray[0][0].lower(),
-            "age"  : (float)(finalarray[0][1]),
-            "heart_rate" : (float)(finalarray[0][2]),
-            "temperature" : (float)(finalarray[0][3]),
-            "SpO2_saturation" : (float)(finalarray[0][4]),
-            "bpm" :(float)(finalarray[0][5])
-        } 
-        new_input_df = pd.DataFrame([final])
-        new_input_df[encoded_cols] = encoder.transform(new_input_df[categorical_cols])
-        new_input_df[numeric_cols] = minscaler.transform(new_input_df[numeric_cols])
-        x_input = new_input_df[numeric_cols + encoded_cols]
-        return x_input
-    x_input = input(finalarray)
-    # print(int_features)
-    # print(finalarray)
-    # print(final[0].iloc[1])
-    prediction=model2.predict(x_input)
-    output= prediction[0]
-    # print(prediction)
-    # print(x_input)
+    if request.method == 'POST':
+        int_features=[x for x in request.form.values()]
+        finalarray=[np.array(int_features)]
+        def input(finalarray):
+            import pandas as pd
+            from sklearn.preprocessing import StandardScaler
+            from sklearn.preprocessing import MaxAbsScaler
+            from sklearn.preprocessing import OneHotEncoder
+            final = {
+                "gender" : finalarray[0][0].lower(),
+                "age"  : (float)(finalarray[0][1]),
+                "heart_rate" : (float)(finalarray[0][2]),
+                "temperature" : (float)(finalarray[0][3]),
+                "SpO2_saturation" : (float)(finalarray[0][4]),
+                "bpm" :(float)(finalarray[0][5])
+            } 
+            new_input_df = pd.DataFrame([final])
+            new_input_df[encoded_cols] = encoder.transform(new_input_df[categorical_cols])
+            new_input_df[numeric_cols] = minscaler.transform(new_input_df[numeric_cols])
+            x_input = new_input_df[numeric_cols + encoded_cols]
+            return x_input
+        x_input = input(finalarray)
+        prediction=model2.predict(x_input)
+        output= prediction[0]
 
     if output == 1:
         return render_template('model.html',pred='Athelete is all right🥳🥳')
     else:
         return render_template('model.html',pred='Athelete requires medical emergency🏥🏥')
+
+
 
 @app.route('/analysis')
 def new_world():
