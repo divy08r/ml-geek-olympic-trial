@@ -22,11 +22,11 @@ def hello_world():
     # return 'Hello, World!'
 
 
-@app.route('/model', methods=['GET'])
-def bye_World():
-    return render_template("model.html")
+# @app.route('/model', methods=['GET'])
+# def bye_World():
+#     return render_template("model.html")
 
-@app.route('/model', methods=['POST'])
+@app.route('/model', methods=['POST', 'GET'])
 def predict():
     if request.method == 'POST':
         int_features=[x for x in request.form.values()]
@@ -50,11 +50,11 @@ def predict():
         output= prediction[0]
 
         if output == 1:
-            return render_template('model.html',pred='Athelete is all right🥳🥳')
+            return render_template("model.html",pred='Athelete is all right🥳🥳')
         else:
-            return render_template('model.html',pred='Athelete requires medical emergency🏥🏥')
+            return render_template("model.html",pred='Athelete requires medical emergency🏥🏥')
     else:
-        return render_template('model.html')
+        return render_template("model.html")
 
 
 @app.route('/analysis')
