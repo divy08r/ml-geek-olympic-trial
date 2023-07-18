@@ -22,7 +22,7 @@ def hello_world():
     # return 'Hello, World!'
 
 
-@app.route('/model')
+@app.route('/model', method=['GET'])
 def bye_World():
     return render_template("model.html")
 
