@@ -22,11 +22,11 @@ def hello_world():
     # return 'Hello, World!'
 
 
-@app.route('/model', method=['GET'])
+@app.route('/model', methods=['GET'])
 def bye_World():
     return render_template("model.html")
 
-@app.route('/model', method=['POST'])
+@app.route('/model', methods=['POST'])
 def predict():
     if request.method == 'POST':
         int_features=[x for x in request.form.values()]
