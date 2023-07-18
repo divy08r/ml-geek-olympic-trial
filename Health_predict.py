@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+pd.options.mode.chained_assignment = None  # default='warn'
 import pickle
 
 health_data = pd.read_csv('health_data.csv')
@@ -14,7 +15,7 @@ health_data['gender'].isnull().sum()
 health_data_not_missing = health_data.dropna(axis=0)
 health_data_not_missing.isna().sum().sum()
 
-health_data_not_missing.info()
+# health_data_not_missing.info()
 health_data_not_missing.describe()
 health_data_not_missing[health_data_not_missing.Health_status == 1].count()
 
@@ -48,7 +49,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MaxAbsScaler
 
 cols_scaled = input_cols[1:]
-cols_scaled
+# cols_scaled
 
 scaler = StandardScaler()
 scaler = StandardScaler().fit(input_df[cols_scaled])
@@ -61,7 +62,7 @@ input_df[cols_scaled] = minscaler.transform(input_df[cols_scaled])
 categorical_cols = input_df.select_dtypes('object').columns.tolist()
 from sklearn.preprocessing import OneHotEncoder
 
-encoder = OneHotEncoder(sparse=False)
+encoder = OneHotEncoder(sparse_output=False)
 encoder.fit(input_df[categorical_cols])
 
 encoded_cols = list(encoder.get_feature_names_out(categorical_cols))
