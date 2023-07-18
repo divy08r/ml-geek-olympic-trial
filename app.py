@@ -24,7 +24,7 @@ def bye_World():
 
 
 
-@app.route('/predict/', methods=['POST', 'GET'])
+@app.route('/predict', methods=['POST', 'GET'])
 def predict():
     
     int_features=[x for x in request.form.values()]
