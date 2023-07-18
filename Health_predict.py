@@ -61,7 +61,7 @@ input_df[cols_scaled] = minscaler.transform(input_df[cols_scaled])
 categorical_cols = input_df.select_dtypes('object').columns.tolist()
 from sklearn.preprocessing import OneHotEncoder
 
-# encoder = OneHotEncoder(sparse_output=False)
+encoder = OneHotEncoder(sparse=False)
 encoder.fit(input_df[categorical_cols])
 
 encoded_cols = list(encoder.get_feature_names_out(categorical_cols))
